@@ -8,5 +8,8 @@ elif last_digit == 0:
     print("The last digit of {1} is {0} and is 0" .format(last_digit, number))
 elif last_digit < 6 and not 0:
     print("The last digit of {1} is {0} and is less than 6 and not 0" .format(last_digit, number))
+elif number < 0:
+    last_digit = -last_digit
+    print("The last digit of {1} is {0} and is less than 6 and not 0" .format(last_digit, number))
 else:
     print("end the program")

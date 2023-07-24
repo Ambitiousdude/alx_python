@@ -1,5 +1,4 @@
 #!/usr/bin/python3
 def add(a, b):
-   print(a+b)
-   return(a+b)
-add(5, 7)
+   result = add(a, b)
+   return result 

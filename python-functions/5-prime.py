@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 def is_prime (number):
-    number = int(input("Enter number: "))
     if number <= 1:
         return False
     elif number == 2:

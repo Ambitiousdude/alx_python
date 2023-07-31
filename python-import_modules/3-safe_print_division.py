@@ -5,11 +5,12 @@ def safe_print_division(a, b):
 # using try to test the code for errors 
     try:
         result = (a / b)
-# handles the errors
-    except:
-        print("An exception has occured")
-# execute the code regardless of the result of the try, and except
+    # if b=0 raise a zerodivisionerror that prints none as a result
+    except ZeroDivisionError:
+        result = None
+    except TypeError:
+        print("Error: Please provide valid integers for both numbers.")
+    # finally print inside result and return result
     finally:
-       print("{}" .format(result))
-    return None
-
+        print("Inside result: {}".format(result))
+    return result

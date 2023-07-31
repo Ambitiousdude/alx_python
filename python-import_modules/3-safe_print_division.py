@@ -4,7 +4,7 @@
 def safe_print_division(a, b):
 # using try to test the code for errors 
     try:
-        result = int(a / b)
+        result = (a / b)
         
         return result
 # handles the errors

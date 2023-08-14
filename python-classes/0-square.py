@@ -8,8 +8,23 @@ Instantiation with size (no type/value verification)
 You are not allowed to import any module
 """
 class Square:
-    """A square class with a private object attribute"""
+    """
+    A class is the prototype or blueprint in creating objects
+    
+    Attributes:
+        size (int): The size of the square, which will be an integer.
+
+    Methods:
+        __init__(self, size):
+            Initializes a new Square object with the given size.
+
+    """
 
     def __init__(self, size):
-        self.__size = size
-    
+        """
+        This is a contructor method that houses the instance variables
+        """
+        self.__Mysize = size
+        """
+        This is a private attribute/Variable
+        """

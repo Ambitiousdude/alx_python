@@ -17,8 +17,9 @@ class square:
         The size is the attributes/variable of the object to be created
     """
     def __init__ (self, size):
+      """
+        Function/ method that initializes the object size.
+        Args:
+            size (int): The size of the square's sides.
         """
-        The __init__ contructor method is also part of the prototype that takes
-        the instance variable and initializes it as soon as the object is created
-        """
-        self.__Mysize = size
+      self.__Mysize = size

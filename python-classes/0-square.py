@@ -20,5 +20,5 @@ class Square:
         """
         Private attributes/variables that keeps the size private
         """
-        self.Mysize= size
+        self.__Mysize= size
     

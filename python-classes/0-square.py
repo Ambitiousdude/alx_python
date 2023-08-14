@@ -7,18 +7,9 @@ Private instance attribute: size
 Instantiation with size (no type/value verification)
 You are not allowed to import any module
 """
-
 class Square:
-    """
-    Represents a square with a private instance attribute 'size'.
+    """A square class with a private object attribute"""
 
-    Attributes:
-        size (int): The size of the square's sides.
-
-    """
     def __init__(self, size):
-        """
-        Private attributes/variables that keeps the size private
-        """
-        self.__Mysize= size
+        self.__size = size
     

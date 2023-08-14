@@ -17,9 +17,4 @@ class square:
         The size is the attributes/variable of the object to be created
     """
     def __init__ (self, size):
-      """
-        Function/ method that initializes the object size.
-        Args:
-            size (int): The size of the square's sides.
-        """
       self.__Mysize = size

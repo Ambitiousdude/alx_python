@@ -10,5 +10,5 @@ class Square:
     def __init__(self, size):
        
         self.__size = size
-        """__size is the private variable creating and it is assigned to 
+        """__size is the private variable/attributes creating and it is assigned to 
         the variable size"""

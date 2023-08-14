@@ -14,7 +14,7 @@ class square:
     and the methods/functions
 
     Attributes:
-    size(int): The size is the attributes/variable of the object to be created
+        size(int): The size is the attributes/variable of the object to be created
     """
     def __init__ (self, size):
       self.__Mysize = size

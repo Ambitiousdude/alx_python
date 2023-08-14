@@ -14,5 +14,5 @@ The class houses the attributes/variables, method/functions
 """
 class Square:
     def __init__ (self, size):
-        ## A private variable/attribute housing the value of the size.
-        self.__Mysize = size
+       self.__Mysize = size
+"""A private variable/attribute housing the value of the size.""" 

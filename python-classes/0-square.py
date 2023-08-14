@@ -10,11 +10,17 @@ You are not allowed to import any module
 
 class square:
     """
-    The class is the blueprint that houses the attributes, 
-    and the methods/functions
+    The class is the blueprint that houses the attributes. 
+    Also it houses the methods/functions.
 
     Attributes:
         size(int): The size is the attributes/variable of the object to be created
     """
     def __init__ (self, size):
+      """
+      The __init__ method takes the argument
+
+      Args:
+        size (int): The size of the square's sides.
+      """
       self.__Mysize = size

@@ -3,27 +3,22 @@
 """
 Write a class Square that defines a square by:
 
-    Private instance attribute: size
-    Instantiation with size (no type/value verification)
-    You are not allowed to import any module
+Private instance attribute: size
+Instantiation with size (no type/value verification)
+You are not allowed to import any module
 """
 
-class Square:
+class square:
     """
-    Represents a square with a private instance attribute 'size'.
+    The class is the blueprint that houses the attributes, 
+    and the methods/functions
 
     Attributes:
-        size (int): The size of the square's sides.
-
-    Methods:
-        __init__(self, size):
-            Initializes a new Square object with the given size.
+        The size is the attributes/variable of the object to be created
     """
-    def __init__(self, size):
+    def __init__ (self, size):
         """
-        Function/ method that initializes the object size.
-
-        Args:
-            size (int): The size of the square's sides.
+        The __init__ contructor method is also part of the prototype that takes
+        the instance variable and initializes it as soon as the object is created
         """
-        self._Square__size = size
+        self.__Mysize = size

@@ -22,9 +22,10 @@ class Square:
 
     def __init__(self, size):
         """
-        This is a contructor method that houses the instance variables
+        Function/ method that initializes the object size.
+
+        Args:
+            size (int): The size of the square's sides.
         """
         self.__Mysize = size
-        """
-        This is a private attribute/Variable
-        """
+    

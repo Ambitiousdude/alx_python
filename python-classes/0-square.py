@@ -7,7 +7,7 @@ Write a class Square that defines a square by:
     You are not allowed to import any module
 """
 
-class square:
+class Square:
     """
     A class representing a square.
     

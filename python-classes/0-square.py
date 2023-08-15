@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-
-
 """
 Write a class Square that defines a square by:
 
@@ -9,20 +7,19 @@ Write a class Square that defines a square by:
     You are not allowed to import any module
 """
 
-
 class square:
     """
-    The class houses the attributes, and the methods/functions.
-
+    A class representing a square.
+    
     Attributes:
-        size(int): Which takes the arguments in integer.
+        size (int): The size of the square.
+
+    Methods:
+        __init__(self, size):
+            Initializes the Square object with the given size.
     """
-
-    def __init__ (self, size):
+    def __init__(self, size):
         """
-        The __init__ method is part of the blueprint which takes an argument.
-        Args:
-            size(int): Which takes the arguments in integer.
-
+        Private instance attribute: size
         """
         self.__size = size

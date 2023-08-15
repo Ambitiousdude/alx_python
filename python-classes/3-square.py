@@ -63,3 +63,4 @@ class Square:
         Calculates the area of the square and returns the new area.
         """
         return self._Square__size ** 2
+    

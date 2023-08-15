@@ -20,8 +20,6 @@ class square:
     """
     def __init__(self, size):
         """
-        Private instance attribute: size
-
         Function/ method that initializes the object size.
 
         Args:

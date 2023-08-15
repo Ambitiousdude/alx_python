@@ -20,9 +20,11 @@ class Square:
     """
     def __init__(self, size):
         """
+        Private instance attribute: size
+
         Function/ method that initializes the object size.
 
         Args:
-            size (int): The size of the square's sides.
+            size (int): The size of the square.
         """
-        self._Square__size = size
+        self.__Mysize = size

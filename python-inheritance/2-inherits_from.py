@@ -18,27 +18,6 @@ def inherits_from(obj, a_class):
         True if the object is an instance of a class that inherited
         (directly or indirectly) from the specified class; otherwise, False.
 
-    Example:
-    >>> class Animal:
-    ...     pass
-    ...
-    >>> class Mammal(Animal):
-    ...     pass
-    ...
-    >>> class Dog(Mammal):
-    ...     pass
-    ...
-    >>> class Cat(Mammal):
-    ...     pass
-    ...
-    >>> doggo = Dog()
-    >>> inherits_from(doggo, Animal)
-    True
-    >>> kitty = Cat()
-    >>> inherits_from(kitty, Dog)
-    False
-    >>> inherits_from(kitty, Mammal)
-    True
     """
     if type(obj) == bool and a_class == int:
         return True

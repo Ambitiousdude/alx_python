@@ -1,40 +1,42 @@
 #!/usr/bin/python3
-"""
-script that takes in arguments and displays all values in the states
-table of hbtn_0e_0_usa where name matches the argument.
-But this time, write one that is safe from MySQL injections!
-"""
+# This script filters all states where name matches argument
+# imports module MySQLdb
 import MySQLdb
 import sys
 
 
-def safe():
-    """
-    Establish a connection to the MySQL server
-    """
-    db = MySQLdb.connect(host='localhost',
-                         user=sys.argv[1],
-                         passwd=sys.argv[2],
-                         db=sys.argv[3])
-    """
-    Create a cursor to interact with the database
-    """
-    cursor = db.cursor()
-    """
-    Execute the SQL query to retrieve states
-    """
-    state_name = sys.argv[4]
-    cursor.execute("SELECT * FROM states \
-                    ORDER by states.id ASC")
-    """
-    fetch and display the results
-    """
-    [print(state) for state in cursor.fetchall() if state[1] == state_name]
-    """
-    Close the cursor and the database connection
-    """
-    cursor.close()
-    db.close()
+def main():
+    database_name = sys.argv[3]
+    username = sys.argv[1]
+    password = sys.argv[2]
+    name_searched = sys.argv[4]
+
+    # Connecting to database in the localhost
+    database = MySQLdb.connect(host='localhost', user=username,
+                               passwd=password, db=database_name,
+                               port=3306)
+
+    # create a cursor
+    cur = database.cursor()
+
+    # finding all the states in the database beginning with N
+    cur.execute("SELECT * FROM states "
+                "WHERE name = '{}' AND "
+                "name LIKE 'N%' AND "
+                "BINARY name NOT LIKE 'n%'"
+                "ORDER BY id ASC".format(name_searched))
+
+    # obtaining the results
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+
+    # close cursor
+    cur.close()
+
+    # close database
+    database.close()
+
 
 if __name__ == "__main__":
-    safe()
+    main()

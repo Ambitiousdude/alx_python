@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # This script filters all states where name matches argument
-# imports module MySQLdb
+#-- imports module MySQLdb
 import MySQLdb
 import sys
 

@@ -1,34 +1,40 @@
 #!/usr/bin/python3
-"""
-Python script that retrieves and displays all states
-with names starting with 'N' (upper case 'N')
-from the hbtn_0e_0_usa database using the MySQLdb module
-"""
+# This script filters all names of states that begin with an N
+# imports module MySQLdb
 import MySQLdb
 import sys
 
+
+def main():
+    database_name = sys.argv[3]
+    username = sys.argv[1]
+    password = sys.argv[2]
+
+    # Connecting to database in the localhost
+    database = MySQLdb.connect(host='localhost', user=username,
+                               passwd=password, db=database_name,
+                               port=3306)
+
+    # create a cursor
+    cur = database.cursor()
+
+    # finding all the states in the database beginning with N
+    cur.execute("SELECT * FROM states "
+                "WHERE name LIKE 'N%' AND "
+                "BINARY name NOT LIKE 'n%'"
+                "ORDER BY states.id ASC ")
+
+    # obtaining the results
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+
+    # close cursor
+    cur.close()
+
+    # close database
+    database.close()
+
+
 if __name__ == "__main__":
-    """
-    # Establish a connection to the MySQL server
-    """
-    db = MySQLdb.connect(host='localhost',
-                         user=sys.argv[1],
-                         passwd=sys.argv[2],
-                         db=sys.argv[3])
-    """
-    Create a cursor to interact with the database
-    """
-    cursor = db.cursor()
-    """
-    Execute the SQL query to retrieve states
-    """
-    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
-    """
-    fetch and display the results
-    """
-    [print(state) for state in cursor.fetchall() if state[1][0] == "N"]
-    """
-    Close the cursor and the database connection
-    """
-    cursor.close()
-    db.close()
+    main()

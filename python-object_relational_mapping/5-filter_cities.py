@@ -1,40 +1,47 @@
 #!/usr/bin/python3
-"""
-script that takes in the name of a state as an
-argument and lists all cities of that state
-using the database hbtn_0e_4_usa
-"""
+# This script filters all cities where name matches state
+# imports module MySQLdb
 import MySQLdb
 import sys
 
 
+def main():
+    database_name = sys.argv[3]
+    username = sys.argv[1]
+    password = sys.argv[2]
+    state_name = sys.argv[4]
+
+    # Connecting to database in the localhost
+    database = MySQLdb.connect(host='localhost', user=username,
+                               passwd=password, db=database_name,
+                               port=3306)
+
+    # create a cursor
+    cur = database.cursor()
+
+    # using a parameterized query
+    query = ("SELECT cities.name FROM cities "
+             "JOIN states ON cities.state_id = states.id "
+             "WHERE %s = states.name "
+             "ORDER BY cities.id ASC")
+
+    # Execute the query with name searched as parameter
+    cur.execute(query, (state_name,))
+
+    # obtaining the results
+    results = cur.fetchall()
+
+    # Extract city names and join them with commas
+    city_names = ", ".join(row[0] for row in results)
+
+    # Display the comma-separated city names
+    print(city_names)
+    # close cursor
+    cur.close()
+
+    # close database
+    database.close()
+
+
 if __name__ == "__main__":
-    """
-    conncet to database
-    """
-    db = MySQLdb.connect(host='localhost',
-                         user=sys.argv[1],
-                         passwd=sys.argv[2],
-                         db=sys.argv[3])
-    """
-    connect to cursor
-    """
-    cursor = db.cursor()
-    """
-    write an Sql query and execute
-    """
-    cursor.execute("SELECT *\
-                    FROM cities\
-                    INNER JOIN states\
-                    ON cities.state_id = states.id\
-                    ORDER BY cities.id ASC")
-    """
-    fetch and display results
-    """
-    [print(", ".join([city[2] for city in cursor.fetchall()
-                      if city[4] == sys.argv[4]]))]
-    """
-    close cursor and database
-    """
-    cursor.close()
-    db.close()
+    main()

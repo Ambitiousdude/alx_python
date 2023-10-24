@@ -1,33 +1,38 @@
 #!/usr/bin/python3
-"""fetches information from JSONplaceholder API and exports to JSON"""
+"""
+Python script to export all employees data to a JSON file.
+"""
 
-from json import dump
-from requests import get
-from sys import argv
+import json
+import requests
+import sys
+
+
+def export_employees_data_json():
+    employees_ids = [
+        employee["id"]
+        for employee in requests.get(
+            "https://jsonplaceholder.typicode.com/users/"
+        ).json()
+    ]
+    employees_data = {}
+
+    for id in employees_ids:
+        tasks = requests.get(
+            "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+        ).json()
+        employees_data[str(id)] = [
+            {
+                "username": requests.get(
+                    "https://jsonplaceholder.typicode.com/users/{}".format(id)
+                ).json()["username"],
+                "task": task["title"],
+                "completed": task["completed"]
+            }
+            for task in tasks
+        ]
+    with open("todo_all_employees.json", "w", encoding="UTF8", newline="") as f:
+        json.dump(employees_data, f)
 
 if __name__ == "__main__":
-    users_url = "https://jsonplaceholder.typicode.com/users"
-    users_result = get(users_url).json()
-
-    big_dict = {}
-    for user in users_result:
-        todo_list = []
-
-        pep_fix = "https://jsonplaceholder.typicode.com"
-        todos_url = pep_fix + "/user/{}/todos".format(user.get("id"))
-        name_url = "https://jsonplaceholder.typicode.com/users/{}".format(
-            user.get("id"))
-
-        todo_result = get(todos_url).json()
-        name_result = get(name_url).json()
-        for todo in todo_result:
-            todo_dict = {}
-            todo_dict.update({"username": name_result.get("username"),
-                              "task": todo.get("title"),
-                              "completed": todo.get("completed")})
-            todo_list.append(todo_dict)
-
-        big_dict.update({user.get("id"): todo_list})
-
-    with open("todo_all_employees.json", 'w') as f:
-        dump(big_dict, f)
+    export_employees_data_json()
